@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:settings_ui/settings_ui.dart';
 
 class MySettingsPage extends StatefulWidget {
   const MySettingsPage({ Key? key }) : super(key: key);
@@ -8,6 +9,8 @@ class MySettingsPage extends StatefulWidget {
 }
 
 class _MySettingsPageState extends State<MySettingsPage> {
+  bool isDarkMode = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +23,32 @@ class _MySettingsPageState extends State<MySettingsPage> {
             fontWeight: FontWeight.bold,
           ),
         )
+      ),
+      body: SettingsList(
+        backgroundColor: Colors.grey[850],
+        sections: [
+          SettingsSection(
+            // titlePadding: EdgeInsets.all(20.0),
+            title: 'General',
+            tiles: [
+              SettingsTile(
+                title: 'Language',
+                subtitle: 'English',
+                leading: Icon(Icons.language_rounded),
+              ),
+              SettingsTile.switchTile(
+                title: 'Dark Mode',
+                leading: Icon(Icons.phone_android),
+                switchValue: isDarkMode,
+                onToggle: (value) {
+                  setState(() {
+                    isDarkMode = value;
+                  });
+                },
+              ),
+            ],
+          )
+        ]
       ),
     );
   }

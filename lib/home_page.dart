@@ -93,7 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'App is still in very early development stage.\nThis build only shows some of the UI.\nTimes you tried to create a new task:',
+                'App is still in very early development stage.\n'
+                'This build only shows some of the UI.\n\n'
+                'Times you tried to create a new task:',
             ),
             Text(
               '$_counter',
@@ -126,27 +128,46 @@ class _MyHomePageState extends State<MyHomePage> {
 Widget getDrawerContent(BuildContext context) {
   return ListView(
     children: <Widget>[
-      DrawerHeader(
-        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-        child: Container(
-          color: Colors.grey,
-          child: const Center(
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.black
-              ),
-            ),
-          )
-        )
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          'Kenjo\'s Lab',
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+          ),
+        // DrawerHeader(
+        //   child: const Text(
+        //     'Kenjo\'s Lab',
+        //     style: TextStyle(
+        //       fontSize: 20.0,
+        //       fontWeight: FontWeight.bold,
+        //     ),
+        //   ),
+          // padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+          // child: Container(
+          //   color: Colors.grey,
+          //   child: const Center(
+          //     child: Text(
+          //       'Drawer Header',
+          //       style: TextStyle(
+          //         color: Colors.black
+          //       ),
+          //     ),
+          //   )
+          // )
+        ),
       ),
       const ListTile(
-        title: Text('Notes')
+        leading: Icon(Icons.note_alt_outlined),
+        title: Text('Notes and Tasks')
       ),
       const ListTile(
-        title: Text('Reminders'),
+        leading: Icon(Icons.timer_rounded),
+        title: Text('Timer'),
       ),
       const ListTile(
+        leading: Icon(Icons.info_outline_rounded),
         title: Text('About'),
       )
     ],

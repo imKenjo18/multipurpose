@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.multipurpose">
    <application
-        android:label="multipurpose"
+        android:label="Multi-Purpose"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

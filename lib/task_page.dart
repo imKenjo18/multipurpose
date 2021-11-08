@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyTaskPage extends StatefulWidget {
@@ -73,7 +72,7 @@ class _MyTaskPageState extends State<MyTaskPage> {
                 context: context, 
                 builder: (_) => AlertDialog(
                   title: const Text('Delete task?'),
-                  content: const Text('You won\'t be able to recover this once you accept.'),
+                  content: const Text('This action will permanently delete this task.'),
                   actions: <Widget>[
                     TextButton(
                       child: const Text(
@@ -83,7 +82,7 @@ class _MyTaskPageState extends State<MyTaskPage> {
                     ),
                     TextButton(
                       child: const Text('Accept'),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
                     ),
                   ],
                 )

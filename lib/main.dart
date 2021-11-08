@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Multi-Purpose App',
+      title: 'Multi-Purpose',
       theme: ThemeData(
         // This is the theme of your application.
         //

@@ -1,6 +1,6 @@
-# multipurpose
+# Multi-Purpose
 
-A new Flutter project.
+My Flutter test/practice project that can do multiple different things.
 
 ## Getting Started
 
