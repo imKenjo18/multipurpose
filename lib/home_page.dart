@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './task_page.dart';
 import './settings_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import './about_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -32,18 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _openTaskPage() {
     Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyTaskPage())
-    );
+        context, MaterialPageRoute(builder: (context) => const MyTaskPage()));
     _incrementCounter();
-    // setState(() {
-    //   // This call to setState tells the Flutter framework that something has
-    //   // changed in this State, which causes it to rerun the build method below
-    //   // so that the display can reflect the updated values. If we changed
-    //   // _counter without calling setState(), then the build method would not be
-    //   // called again, and so nothing would appear to happen.
-    //   counter++;
-    // });
   }
 
   void _loadCounter() async {
@@ -59,7 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter = (prefs.getInt('counter') ?? 0) + 1;
       prefs.setInt('counter', _counter);
     });
-    // _printPrefs();
   }
 
   // void _printPrefs() async {
@@ -90,18 +80,15 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            onPressed: () => Navigator.push(
-              context, 
-              MaterialPageRoute(builder: (context) => const MySettingsPage())
-            ),
-            tooltip: 'Settings',
-            icon: const Icon(Icons.settings_rounded)
-          ),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const MySettingsPage())),
+              tooltip: 'Settings',
+              icon: const Icon(Icons.settings_rounded)),
         ],
       ),
-      drawer: Drawer(
-        child: getDrawerContent(context)
-      ),
+      drawer: Drawer(child: getDrawerContent(context)),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -123,9 +110,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-                'App is still in very early development stage.\n'
-                'This build only shows some of the UI.\n\n'
-                'Times you tried to create a new task:',
+              'App is still in very early development stage.\n'
+              'This build only shows some of the UI.\n\n'
+              'Times you tried to create a new task:',
             ),
             Text(
               '$_counter',
@@ -150,7 +137,8 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 50.0,
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButtonLocation: FloatingActionButtonLocation
+          .centerDocked, // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
@@ -158,22 +146,22 @@ class _MyHomePageState extends State<MyHomePage> {
 Widget getDrawerContent(BuildContext context) {
   return ListView(
     children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.all(16.0),
+      const Padding(
+        padding: EdgeInsets.all(16.0),
         child: Text(
           'Kenjo\'s Lab',
           style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
           ),
-        // DrawerHeader(
-        //   child: const Text(
-        //     'Kenjo\'s Lab',
-        //     style: TextStyle(
-        //       fontSize: 20.0,
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
+          // DrawerHeader(
+          //   child: const Text(
+          //     'Kenjo\'s Lab',
+          //     style: TextStyle(
+          //       fontSize: 20.0,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
           // padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           // child: Container(
           //   color: Colors.grey,
@@ -188,19 +176,21 @@ Widget getDrawerContent(BuildContext context) {
           // )
         ),
       ),
-      const ListTile(
-        leading: Icon(Icons.note_alt_outlined),
-        title: Text('Notes and Tasks')
+      ListTile(
+        leading: const Icon(Icons.note_alt_outlined),
+        title: const Text('Notes and Tasks'),
+        onTap: () {},
       ),
-      const ListTile(
-        leading: Icon(Icons.timer_rounded),
-        title: Text('Timer'),
+      ListTile(
+        leading: const Icon(Icons.timer_rounded),
+        title: const Text('Timer'),
+        onTap: () {},
       ),
-      const ListTile(
-        leading: Icon(Icons.info_outline_rounded),
-        title: Text('About'),
-      )
+      ListTile(
+          leading: const Icon(Icons.info_outline_rounded),
+          title: const Text('About'),
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MyAboutPage())))
     ],
   );
 }
-

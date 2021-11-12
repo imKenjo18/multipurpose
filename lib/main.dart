@@ -14,19 +14,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  dynamic myThemeMode;
+  bool _isDarkMode = false;
 
   @override
   void initState() {
     super.initState();
-    _loadTheme();
+    loadTheme();
   }
 
-  void _loadTheme() async {
+  void loadTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      myThemeMode = (prefs.get('theme') ?? ThemeMode.system);
-      // print(prefs.getKeys());
+      _isDarkMode = (prefs.getBool('isDarkMode') ?? false);
     });
   }
 
@@ -48,9 +47,8 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.green,
       ),
       darkTheme: ThemeData.dark(),
-      themeMode: myThemeMode,
+      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
       home: const MyHomePage(title: 'Home'),
     );
   }
 }
-

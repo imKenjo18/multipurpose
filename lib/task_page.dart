@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyTaskPage extends StatefulWidget {
-  const MyTaskPage({ Key? key }) : super(key: key);
+  const MyTaskPage({Key? key}) : super(key: key);
 
   @override
   _MyTaskPageState createState() => _MyTaskPageState();
@@ -17,25 +17,25 @@ class _MyTaskPageState extends State<MyTaskPage> {
         leading: IconButton(
           icon: const Icon(Icons.close_rounded),
           onPressed: () => Navigator.pop(context)
-            // showDialog(
-            //   context: context, 
-            //   builder: (_) => CupertinoAlertDialog(
-            //     title: Text('Discard changes?'),
-            //     content: Padding(
-            //       padding: const EdgeInsets.all(8.0),
-            //       child: Text('Changes won\'t be saved.'),
-            //     ),
-            //     actions: <Widget>[
-            //       CupertinoDialogAction(
-            //         child: Text('No'),
-            //         onPressed: () => Navigator.pop(context),
-            //       ),
-            //       CupertinoDialogAction(
-            //         child: Text('Yes'),
-            //         onPressed: () => Navigator.of(context).pop(),
-            //       )
-            //     ],
-            //   ) 
+          // showDialog(
+          //   context: context,
+          //   builder: (_) => CupertinoAlertDialog(
+          //     title: Text('Discard changes?'),
+          //     content: Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: Text('Changes won\'t be saved.'),
+          //     ),
+          //     actions: <Widget>[
+          //       CupertinoDialogAction(
+          //         child: Text('No'),
+          //         onPressed: () => Navigator.pop(context),
+          //       ),
+          //       CupertinoDialogAction(
+          //         child: Text('Yes'),
+          //         onPressed: () => Navigator.of(context).pop(),
+          //       )
+          //     ],
+          //   )
           ,
           tooltip: 'Cancel',
         ),
@@ -49,7 +49,9 @@ class _MyTaskPageState extends State<MyTaskPage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: isPinned ? const Icon(Icons.push_pin_rounded) : const Icon(Icons.push_pin_outlined),
+            icon: isPinned
+                ? const Icon(Icons.push_pin_rounded)
+                : const Icon(Icons.push_pin_outlined),
             tooltip: isPinned ? 'Unpin' : 'Pin',
             onPressed: () {
               setState(() {
@@ -69,24 +71,25 @@ class _MyTaskPageState extends State<MyTaskPage> {
             tooltip: 'Delete',
             onPressed: () => {
               showDialog(
-                context: context, 
-                builder: (_) => AlertDialog(
-                  title: const Text('Delete task?'),
-                  content: const Text('This action will permanently delete this task.'),
-                  actions: <Widget>[
-                    TextButton(
-                      child: const Text(
-                        'Decline',
-                        ),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                    TextButton(
-                      child: const Text('Accept'),
-                      onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
-                    ),
-                  ],
-                )
-              ),
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: const Text('Delete task?'),
+                        content: const Text(
+                            'This action will permanently delete this task.'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text(
+                              'Decline',
+                            ),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                          TextButton(
+                            child: const Text('Accept'),
+                            onPressed: () => Navigator.popUntil(
+                                context, (route) => route.isFirst),
+                          ),
+                        ],
+                      )),
             },
           ),
         ],
@@ -111,4 +114,3 @@ class _MyTaskPageState extends State<MyTaskPage> {
     );
   }
 }
-
