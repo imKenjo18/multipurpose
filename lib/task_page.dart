@@ -50,7 +50,7 @@ class _MyTaskPageState extends State<MyTaskPage> {
         actions: <Widget>[
           IconButton(
             icon: isPinned ? const Icon(Icons.push_pin_rounded) : const Icon(Icons.push_pin_outlined),
-            tooltip: 'Pin',
+            tooltip: isPinned ? 'Unpin' : 'Pin',
             onPressed: () {
               setState(() {
                 if (isPinned) {

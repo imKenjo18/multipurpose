@@ -9,7 +9,24 @@ class MySettingsPage extends StatefulWidget {
 }
 
 class _MySettingsPageState extends State<MySettingsPage> {
-  bool isDarkMode = true;
+  // dynamic myThemeMode;
+  bool isDarkMode = false;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _loadTheme();
+  // }
+
+  // void _loadTheme() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     if (isDarkMode) {
+  //       prefs.
+  //     }
+  //     myThemeMode = (prefs.get('theme') ?? ThemeMode.light);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +45,7 @@ class _MySettingsPageState extends State<MySettingsPage> {
         backgroundColor: Colors.grey[850],
         sections: [
           SettingsSection(
-            // titlePadding: EdgeInsets.all(20.0),
+            titlePadding: EdgeInsets.only(top: 10.0),
             title: 'General',
             tiles: [
               SettingsTile(
@@ -37,7 +54,7 @@ class _MySettingsPageState extends State<MySettingsPage> {
                 leading: Icon(Icons.language_rounded),
               ),
               SettingsTile.switchTile(
-                title: 'Dark Mode',
+                title: 'Dark Mode(Broken)',
                 leading: Icon(Icons.phone_android),
                 switchValue: isDarkMode,
                 onToggle: (value) {
@@ -53,3 +70,4 @@ class _MySettingsPageState extends State<MySettingsPage> {
     );
   }
 }
+

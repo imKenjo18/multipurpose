@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './task_page.dart';
 import './settings_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -23,20 +24,49 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadCounter();
+  }
+
   void _openTaskPage() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const MyTaskPage())
     );
+    _incrementCounter();
+    // setState(() {
+    //   // This call to setState tells the Flutter framework that something has
+    //   // changed in this State, which causes it to rerun the build method below
+    //   // so that the display can reflect the updated values. If we changed
+    //   // _counter without calling setState(), then the build method would not be
+    //   // called again, and so nothing would appear to happen.
+    //   counter++;
+    // });
+  }
+
+  void _loadCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter = (prefs.getInt('counter') ?? 0);
     });
   }
+
+  void _incrementCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _counter = (prefs.getInt('counter') ?? 0) + 1;
+      prefs.setInt('counter', _counter);
+    });
+    // _printPrefs();
+  }
+
+  // void _printPrefs() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   dynamic prefer = prefs.getKeys();
+  //   print(prefer);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _openTaskPage,
         tooltip: 'New Task',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add_rounded),
         foregroundColor: Colors.white,
         backgroundColor: Colors.green,
         elevation: 2.0,

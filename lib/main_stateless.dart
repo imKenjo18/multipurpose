@@ -1,35 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import './home_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  dynamic myThemeMode;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadTheme();
-  }
-
-  void _loadTheme() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      myThemeMode = (prefs.get('theme') ?? ThemeMode.system);
-      // print(prefs.getKeys());
-    });
-  }
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,7 +27,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.green,
       ),
       darkTheme: ThemeData.dark(),
-      themeMode: myThemeMode,
+      // themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'Home'),
     );
   }
