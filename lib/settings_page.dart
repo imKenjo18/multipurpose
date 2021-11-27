@@ -45,33 +45,37 @@ class _MySettingsPageState extends State<MySettingsPage> {
               fontWeight: FontWeight.bold,
             ),
           )),
-      body: SettingsList(backgroundColor: Colors.grey[850], sections: [
-        SettingsSection(
-          titlePadding: const EdgeInsets.only(
-            top: 10.0,
-            left: 20.0,
-          ),
-          title: 'General',
-          tiles: [
-            const SettingsTile(
-              title: 'Language',
-              subtitle: 'English',
-              leading: Icon(Icons.language_rounded),
-            ),
-            SettingsTile.switchTile(
-              title: 'Dark Mode (Restarts App)',
-              leading: const Icon(Icons.phone_android),
-              switchValue: _isDarkMode,
-              onToggle: (value) {
-                setState(() {
-                  _isDarkMode = value;
-                  setDarkModeValue();
-                });
-              },
-            ),
-          ],
-        )
-      ]),
+      body: SettingsList(
+          backgroundColor: _isDarkMode ? Colors.grey[850] : Colors.white,
+          sections: [
+            SettingsSection(
+              titlePadding: const EdgeInsets.only(
+                top: 10.0,
+                left: 20.0,
+              ),
+              title: 'General',
+              titleTextStyle: const TextStyle(color: Colors.green),
+              tiles: [
+                const SettingsTile(
+                  title: 'Language',
+                  subtitle: 'English',
+                  leading: Icon(Icons.language_rounded),
+                ),
+                SettingsTile.switchTile(
+                  title: 'Dark Mode',
+                  leading: const Icon(Icons.dark_mode_outlined),
+                  switchActiveColor: Colors.green,
+                  switchValue: _isDarkMode,
+                  onToggle: (value) {
+                    setState(() {
+                      _isDarkMode = value;
+                      setDarkModeValue();
+                    });
+                  },
+                ),
+              ],
+            )
+          ]),
     );
   }
 }

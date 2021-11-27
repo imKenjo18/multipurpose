@@ -46,7 +46,14 @@ class _MyAppState extends State<MyApp> {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.green,
+        colorScheme: const ColorScheme.dark(
+          secondary: Color(0xFF4CAF50),
+          secondaryVariant: Color(0xFF4CAF50),
+        ),
+      ),
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
       home: const MyHomePage(title: 'Home'),
     );

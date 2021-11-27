@@ -70,23 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(
-          widget.title,
-          style: const TextStyle(
+        title: const Text(
+          // widget.title,
+          "Notes and Tasks",
+          style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-              onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MySettingsPage())),
-              tooltip: 'Settings',
-              icon: const Icon(Icons.settings_rounded)),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //       onPressed: () => Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //               builder: (context) => const MySettingsPage())),
+        //       tooltip: 'Settings',
+        //       icon: const Icon(Icons.settings_rounded)),
+        // ],
       ),
       drawer: Drawer(child: getDrawerContent(context)),
       body: Center(
@@ -110,8 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'App is still in very early development stage.\n'
-              'This build only shows some of the UI.\n\n'
               'Times you tried to create a new task:',
             ),
             Text(
@@ -186,11 +185,19 @@ Widget getDrawerContent(BuildContext context) {
         title: const Text('Timer'),
         onTap: () {},
       ),
+      const Divider(
+        thickness: 2.5,
+      ),
+      ListTile(
+          leading: const Icon(Icons.settings_outlined),
+          title: const Text('Settings'),
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MySettingsPage()))),
       ListTile(
           leading: const Icon(Icons.info_outline_rounded),
           title: const Text('About'),
           onTap: () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const MyAboutPage())))
+              MaterialPageRoute(builder: (context) => const MyAboutPage()))),
     ],
   );
 }

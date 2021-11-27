@@ -26,7 +26,10 @@ class _MyAboutPageState extends State<MyAboutPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Blah blah blah blah.\n',
+              'This is an app made by Kenjo for testing Flutter.\n'
+              'It is still in very early development stage.\n'
+              'Right now it only shows some of the UI.\n',
+              textAlign: TextAlign.center,
             ),
             ElevatedButton(
               style: ButtonStyle(
