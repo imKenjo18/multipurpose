@@ -94,6 +94,22 @@ class _MyTaskPageState extends State<MyTaskPage> {
           ),
         ],
       ),
+      body: Column(
+        children: const [
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Title',
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Description',
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {Navigator.of(context).pop()},
         tooltip: 'Save',
@@ -105,10 +121,27 @@ class _MyTaskPageState extends State<MyTaskPage> {
       bottomNavigationBar: BottomAppBar(
         color: Colors.grey[900],
         shape: const CircularNotchedRectangle(),
-        notchMargin: 4,
-        child: Container(
-          height: 50.0,
-        ),
+        child: SizedBox(
+            height: 50.0,
+            child: Row(
+              children: [
+                IconButton(
+                  color: Colors.white70,
+                  onPressed: () {},
+                  icon: const Icon(Icons.format_bold_rounded),
+                ),
+                IconButton(
+                  color: Colors.white70,
+                  onPressed: () {},
+                  icon: const Icon(Icons.format_italic_rounded),
+                ),
+                IconButton(
+                  color: Colors.white70,
+                  onPressed: () {},
+                  icon: const Icon(Icons.format_underline_rounded),
+                ),
+              ],
+            )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );

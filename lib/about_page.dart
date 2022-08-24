@@ -35,7 +35,7 @@ class _MyAboutPageState extends State<MyAboutPage> {
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.green)),
-              child: const Text('Visit My Website'),
+              child: const Text('Check the web version'),
               onPressed: _launchWebsite,
             )
           ],

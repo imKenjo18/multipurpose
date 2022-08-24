@@ -3,6 +3,8 @@ import './task_page.dart';
 import './settings_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './about_page.dart';
+import './timer_page.dart';
+import './games_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -72,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: const Text(
           // widget.title,
-          "Notes and Tasks",
+          'Notes and Tasks',
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
@@ -131,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomAppBar(
         color: Colors.grey[900],
         shape: const CircularNotchedRectangle(),
-        notchMargin: 4,
+        // notchMargin: 4,
         child: Container(
           height: 50.0,
         ),
@@ -178,13 +180,20 @@ Widget getDrawerContent(BuildContext context) {
       ListTile(
         leading: const Icon(Icons.note_alt_outlined),
         title: const Text('Notes and Tasks'),
-        onTap: () {},
+        selected: true,
+        selectedTileColor: Colors.black12,
+        onTap: () => Navigator.pop(context),
       ),
       ListTile(
-        leading: const Icon(Icons.timer_rounded),
-        title: const Text('Timer'),
-        onTap: () {},
-      ),
+          leading: const Icon(Icons.watch_later_outlined),
+          title: const Text('Timer'),
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MyTimerPage()))),
+      ListTile(
+          leading: const Icon(Icons.play_circle_outline_rounded),
+          title: const Text('Games'),
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MyGamesPage()))),
       const Divider(
         thickness: 2.5,
       ),

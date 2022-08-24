@@ -61,6 +61,11 @@ class _MySettingsPageState extends State<MySettingsPage> {
                   subtitle: 'English',
                   leading: Icon(Icons.language_rounded),
                 ),
+                const SettingsTile(
+                  title: 'Accent Color',
+                  leading: Icon(Icons.color_lens_outlined),
+                  subtitle: 'Green',
+                ),
                 SettingsTile.switchTile(
                   title: 'Dark Mode',
                   leading: const Icon(Icons.dark_mode_outlined),
